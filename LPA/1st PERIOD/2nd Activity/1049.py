@@ -26,9 +26,28 @@ if __name__ == '__main__':
         }
     }
 
-    bone = str(input('vertebrado ou invertebrado: ')).lower()
-    kindof = str(input('ave, mamifero, inseto, analideo: ')).lower()
-    feed = str(input('carnivoro, onivoro, herbivoro, hematofago: ')).lower()
+    while True:
+        bone = str(input('bone: ')).lower()
+        if bone not in tree:
+            os.system('cls')
+            print(f'Invalid option, you can only type: {list(tree.keys())}')
+        
+        else: break
 
-    os.system('cls')
-    print(tree[bone][kindof][feed])
+    while True:
+        kindof = str(input('kindof: ')).lower()
+        if kindof not in tree[bone]:
+            os.system('cls')
+            print(f'Invalid option, you can only type: {list(tree[bone].keys())}')
+        
+        else: break
+
+    while True:
+        feed = str(input('feed: ')).lower()
+        if feed not in tree[bone][kindof]:
+            os.system('cls')
+            print(f'Invalid option, you can only type: {list(tree[bone][kindof].keys())}')
+
+        else:
+            print(tree[bone][kindof][feed])
+            break
