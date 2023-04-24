@@ -26,28 +26,34 @@ if __name__ == '__main__':
         }
     }
 
-    while True:
-        bone = str(input('bone: ')).lower()
-        if bone not in tree:
-            os.system('cls')
-            print(f'Invalid option, you can only type: {list(tree.keys())}')
-        
-        else: break
+    current = 'bone'
 
     while True:
-        kindof = str(input('kindof: ')).lower()
-        if kindof not in tree[bone]:
-            os.system('cls')
-            print(f'Invalid option, you can only type: {list(tree[bone].keys())}')
-        
-        else: break
+        if current == 'bone':
+            bone = str(input('bone: ')).lower()
 
-    while True:
-        feed = str(input('feed: ')).lower()
-        if feed not in tree[bone][kindof]:
-            os.system('cls')
-            print(f'Invalid option, you can only type: {list(tree[bone][kindof].keys())}')
+            if input('bone: ').lower() not in tree:
+                os.system('cls')
+                print(f'Invalid option, you can only type: {list(tree.keys())}')
+            else:
+                current = 'kindof'
 
-        else:
-            print(tree[bone][kindof][feed])
-            break
+        elif current == 'kindof':
+            kindof = str(input('kindof: ')).lower()
+
+            if kindof not in tree[bone]:
+                os.system('cls')
+                print(f'Invalid option, you can only type: {list(tree[bone].keys())}')
+            else:
+                current = 'feed'
+
+        elif current == 'feed':
+            feed = str(input('feed: ')).lower()
+
+            if feed not in tree[bone][kindof]:
+                os.system('cls')
+                print(f'Invalid option, you can only type: {list(tree[bone][kindof].keys())}')
+            else:
+                break
+
+    print(tree[bone][kindof][feed])
